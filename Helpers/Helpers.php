@@ -29,7 +29,7 @@
 	
 	function FooterTienda($data="")
 	{
-		$view_footer = "Views/Template/footer_tienda.php";
+		$view_footer = "Views/Template/footer.php";
 		require_once($view_footer);
 	}
 	function Dep($data)
