@@ -11,8 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE DATABASE `elbuensamaritano`;
-USE `elbuensamaritano`;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +26,7 @@ USE `elbuensamaritano`;
 --
 -- Estructura de tabla para la tabla `categoria`
 --
-
+/*
 DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE IF NOT EXISTS `categoria` (
   `idcategoria` bigint NOT NULL AUTO_INCREMENT,
@@ -75,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `detalle_temp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
-
+*/
 --
 -- Estructura de tabla para la tabla `modulo`
 --
@@ -108,7 +106,7 @@ INSERT INTO `modulo` (`idmodulo`, `titulo`, `descripcion`, `status`) VALUES
 --
 -- Estructura de tabla para la tabla `pedido`
 --
-
+/*
 DROP TABLE IF EXISTS `pedido`;
 CREATE TABLE IF NOT EXISTS `pedido` (
   `idpedido` bigint NOT NULL AUTO_INCREMENT,
@@ -122,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `pedido` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
-
+*/
 --
 -- Estructura de tabla para la tabla `permisos`
 --
@@ -199,18 +197,11 @@ CREATE TABLE IF NOT EXISTS `persona` (
 -- Volcado de datos para la tabla `persona`
 --
 
-INSERT INTO `persona` (`idpersona`, `identificacion`, `nombres`, `apellidos`, `telefono`, `email_user`, `password`, `nit`, `nombrefiscal`, `direccionfiscal`, `token`, `rolid`, `datecreated`, `status`) VALUES
-(1, '1030680495', 'Juan Sebastián', 'Benavides Martínez', 3203997016, 'sebastianbm97@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '', '', '', 1, '2022-09-22 23:24:57', 1),
-(2, '1071171895', 'Juanito', 'Perez', 3227014417, 'jbenavidesm1@ucentral.edu.co', '481f6cc0511143ccdd7e2d1b1b94faf0a700a8b49cd13922a70b5ae28acaa8c5', '1071171895', 'Juanito SAS', 'Av siempre viva 123', '', 1, '2022-09-22 23:29:09', 1),
-(3, '6543', 'Prueba', 'Pruebita', 543, 'a@gfd.com', '', '', '', '', '', 9, '2022-09-23 12:00:23', 1),
-(4, '654', 'Pedro', 'Martinez', 6543, 'abc@gmail.com', '', '', '', '', '', 1, '2022-09-23 14:22:35', 2),
-(5, '98765', 'Carmel', 'Arana', 9876543210, 'carme@gmail.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '98765', 'Carmel', 'Hospital de Kennedy', '', 8, '2022-09-23 14:23:13', 1),
-(6, '7654', 'Sebastián', 'Benavides', 444033, 'correo@gmail.com.co', '', '', '', '', '', 8, '2022-09-23 16:09:14', 1),
-(7, '65432', 'Hgfds', 'Ssssss', 765, 's@fa.co', '', '', '', '', '', 8, '2022-09-23 16:30:22', 0),
-(8, '876543', 'Francisco', 'Herrera', 765432, 'francisco@info.com', 'b221d9dbb083a7f33428d7c2a3c3198ae925614d70210e28716ccaa7cd4ddb79', '', '', '', '', 4, '2022-09-27 12:54:40', 1);
+INSERT INTO `persona` (`idpersona`, `identificacion`, `nombres`, `apellidos`, `telefono`, `email_user`, `password`, `nit`, `nombrefiscal`, `direccionfiscal`, `token`, `rolid`, `status`) VALUES
+(1, '1030680495', 'Juan Sebastián', 'Benavides Martínez', 3203997016, 'sebastianbm97@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '', '', '', 1, 1);
 
 -- --------------------------------------------------------
-
+/*
 --
 -- Estructura de tabla para la tabla `producto`
 --
@@ -230,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `producto` (
   PRIMARY KEY (`idproducto`),
   KEY `categoriaid` (`categoriaid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -265,7 +256,7 @@ INSERT INTO `rol` (`idrol`, `nombrerol`, `descripcion`, `status`) VALUES
 --
 -- Restricciones para tablas volcadas
 --
-
+/*
 --
 -- Filtros para la tabla `detalle_pedido`
 --
@@ -284,7 +275,7 @@ ALTER TABLE `detalle_temp`
 --
 ALTER TABLE `pedido`
   ADD CONSTRAINT `FK_PED_PER_01` FOREIGN KEY (`personaid`) REFERENCES `persona` (`idpersona`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+*/
 --
 -- Filtros para la tabla `permisos`
 --
@@ -301,10 +292,11 @@ ALTER TABLE `persona`
 --
 -- Filtros para la tabla `producto`
 --
+/*
 ALTER TABLE `producto`
   ADD CONSTRAINT `FK_PRO_CAT` FOREIGN KEY (`categoriaid`) REFERENCES `categoria` (`idcategoria`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
-
+*/
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
