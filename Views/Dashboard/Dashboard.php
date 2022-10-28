@@ -14,7 +14,8 @@
         <div class="tile">
           <div class="tile-body">Dashboard</div>
         </div>
-          <?php  
+          <?php 
+          dep($_SESSION); 
           //dep(CambioMoneda(50000, 'COP', 'USD'));
             /*$requestApi = CurlConnectionGet(URLPAYPAL."/v2/checkout/orders/19F44859MN067671Y","application/json",
             GetTokenPaypal());
