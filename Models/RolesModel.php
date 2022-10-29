@@ -77,7 +77,7 @@
 		public function DeleteRol(int $idRol)
 		{
 			$this->intIdRol = $idRol;
-			$sql = "SELECT * FROM persona WHERE rolid != {$this->intIdRol}";
+			$sql = "SELECT * FROM persona WHERE rolid = {$this->intIdRol}";
 			$request = $this->SelectAll($sql);
 			if(empty($request))
 			{

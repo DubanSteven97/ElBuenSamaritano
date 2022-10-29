@@ -16,7 +16,7 @@
       </a>
     </li>
     <?php } ?>
-    <?php //if(!empty($_SESSION['permisos']['Usuarios']['r']) || !empty($_SESSION['permisos']['Roles']['r']) || !empty($_SESSION['permisos']['Modulos']['r'])){?>
+    <?php if(!empty($_SESSION['permisos']['Usuarios']['r']) || !empty($_SESSION['permisos']['Roles']['r']) || !empty($_SESSION['permisos']['Modulos']['r'])){?>
     <li class="treeview">
       <a class="app-menu__item" href="#" data-toggle="treeview">
         <i class="app-menu__icon fa fa-users" aria-hidden="true"></i>
@@ -24,13 +24,13 @@
         <i class="treeview-indicator fa fa-angle-right"></i>
       </a>
       <ul class="treeview-menu">
-        <?php //if(!empty($_SESSION['permisos']['Usuarios']['r'])){ ?>
+        <?php if(!empty($_SESSION['permisos']['Usuarios']['r'])){ ?>
         <li>
           <a class="treeview-item" href="<?=BaseUrl();?>/usuarios">
             <i class="icon fa fa-circle-o"></i> Usuarios
           </a>
         </li>
-        <?php //} ?>
+        <?php } ?>
         <?php if(!empty($_SESSION['permisos']['Roles']['r'])){?>
         <li>
           <a class="treeview-item" href="<?=BaseUrl();?>/roles">
@@ -47,7 +47,7 @@
         <?php } ?>
       </ul>
     </li>
-    <?php// } ?>
+    <?php } ?>
     <?php if(!empty($_SESSION['permisos']['Clientes']['r'])){?>
     <li>
       <a class="app-menu__item" href="<?=BaseUrl();?>/clientes">
