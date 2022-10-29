@@ -44,7 +44,7 @@
 					}
 					if($_SESSION['permisosMod']['u']){
 						$btnEdit = '<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="fntPermisos('.$arrData[$i]['idrol'].')" title="Permisos"><i class="fas fa-key"></i></button>
-									<button class="btn btn-primary btn-sm btnEditRol" onClick="fntEditRol('.$arrData[$i]['idrol'].')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
+									<button class="btn btn-primary btn-sm btnEditRol" onClick="fntEditRol(this,'.$arrData[$i]['idrol'].')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
 					}
 					if($_SESSION['permisosMod']['d']){
 						$btnDelete = '<button class="btn btn-danger btn-sm btnDelRol" onClick="fntDelRol('.$arrData[$i]['idrol'].')" title="Eliminar"><i class="fas fa-trash-alt"></i></button></div>';
@@ -102,7 +102,7 @@
 
 		public function SetRol()
 		{
-			$intIdRol = intval($_POST['idRol']);
+			$intIdRol = intval($_POST['idrol']);
 			$strRol = StrClean($_POST['txtNombre']);
 			$strDescripcion = StrClean($_POST['txtDescripcion']);
 			$intStatus = intval($_POST['listStatus']);
