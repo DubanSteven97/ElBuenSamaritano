@@ -10,7 +10,7 @@
 			{
 				header('Location: ' . BaseUrl(). '/login');
 			}
-			//GetPermisos('Dashboard');
+			GetPermisos('Dashboard');
 		}
 		public function dashboard()
 		{
