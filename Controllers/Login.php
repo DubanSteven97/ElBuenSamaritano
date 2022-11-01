@@ -44,7 +44,6 @@
 							$_SESSION['timeout'] = true;
 							$_SESSION['inicio'] = time();
 							$arrData = $this->model->SessionLogin($_SESSION['idUser']);
-							GetPermisos(7);
 							$_SESSION['userData'] = $arrData;
 							$arrResponse = array('status' => true, 'msg' => 'ok');		
 						}else{
