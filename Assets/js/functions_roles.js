@@ -111,32 +111,11 @@ document.addEventListener('DOMContentLoaded',function(){
     }
 },false);
 
-window.addEventListener('load',function(){
-    fntRolesUsuario();
-},false);
-
-function fntRolesUsuario()
-{
-    let ajaxUrl = BaseUrl+'/Roles/GetSelectRoles';
-    let request = (window.XMLHttpRequest) ? XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    request.open("GET",ajaxUrl,true);
-    request.send();
-    request.onreadystatechange = function(){
-        if(request.readyState == 4 && request.status == 200){
-            document.querySelector("#listRolId").innerHTML = request.responseText;
-            $('#listRolId').selectpicker('render');     
-            $('#listStatus').selectpicker('render');
-        }
-    }
-
-}
-
 function fntPermisos(idrol)
 {
 	var idRol = idrol;
 	var request = (window.XMLHttpRequest) ? XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP')
 	var ajaxUrl = BaseUrl+'/Permisos/GetPermisosRol/'+idRol;
-    console.log(BaseUrl+'/Permisos/GetPermisosRol/'+idRol);
 	request.open("GET",ajaxUrl,true);
 	request.send();
 	request.onreadystatechange = function(){
