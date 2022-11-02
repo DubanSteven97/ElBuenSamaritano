@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h1><?= $data['page_tag'];?></h1><br>
+                    <h1><?= $data['page_tag'];?> Hola Mundo</h1><br>
                     <form class="row g-3" action="" id="formRegister" nombre="formRegister" >
                         <div class="col-12">
                             <label for="numero_identificacion" class="form-label">Número de identificación</label>

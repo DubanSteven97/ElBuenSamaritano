@@ -20,7 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `elbuensamaritano`
 --
-
+Drop database `elbuensamaritano`;
+Create database `elbuensamaritano`;
+use `elbuensamaritano`;
 -- --------------------------------------------------------
 
 --
@@ -198,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `persona` (
 --
 
 INSERT INTO `persona` (`idpersona`, `identificacion`, `nombres`, `apellidos`, `telefono`, `email_user`, `password`, `nit`, `nombrefiscal`, `direccionfiscal`, `token`, `rolid`, `status`) VALUES
-(1, '1030680495', 'Juan Sebastián', 'Benavides Martínez', 3203997016, 'sebastianbm97@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '', '', '', 1, 1);
+(1, '1030680495', 'Juan Sebastián', 'Benavides Martínez', 3203997016, 'prueba@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '', '', '', 1, 1);
 
 -- --------------------------------------------------------
 /*
