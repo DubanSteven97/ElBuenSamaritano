@@ -4,7 +4,10 @@
 	{
 		return BASE_URL;
 	}
-
+	function NombreApp()
+	{
+		return NOMBRE_APP;
+	}
 	function Media(){
 		return BASE_URL."/Assets";
 	}

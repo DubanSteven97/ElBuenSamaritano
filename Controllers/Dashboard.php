@@ -17,7 +17,7 @@
 			$data['page_id'] = 2;
 			$data['page_tag'] ="Dashboard";
 			$data['page_name'] = "dashboard";
-			$data['page_title'] = "Dashboard <small> Tienda Virtual</smal>";
+			$data['page_title'] = "Dashboard <small>". NombreApp()."</smal>";
 			$data['page_functions_js'] = "functions_dashboard.js";
 			$this->views->GetView($this,"dashboard",$data);
 		}

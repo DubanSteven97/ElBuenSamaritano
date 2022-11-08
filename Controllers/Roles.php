@@ -19,7 +19,7 @@
 			}
 			$data['page_tag'] ="Roles Usuario";
 			$data['page_name'] = "rol_usuario";
-			$data['page_title'] = "Roles Usuario <small> El buen Samaritano</smal>";
+			$data['page_title'] = "Roles Usuario <small> ". NombreApp()."</smal>";
 			$data['page_functions_js'] = "functions_roles.js";
 			$this->views->GetView($this,"roles",$data);
 		}
