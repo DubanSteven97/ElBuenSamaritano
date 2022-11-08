@@ -1,7 +1,7 @@
 <?php
 	
 	const BASE_URL = "https://elbuensamaritanoucentral.000webhostapp.com";
-	const BASE_URL_H = "elbuensamaritanoucentral.000webhostapp.comx";
+	const BASE_URL_H = "elbuensamaritanoucentral.000webhostapp.com/";
 
 	date_default_timezone_set('America/Bogota');
 
@@ -21,6 +21,7 @@
 	const NOMBRE_REMITENTE = "El Buen Samaritano";
 	const EMAIL_REMITENTE = "info@elbuensamaritano.com";
 	const NOMBRE_EMPRESA = "EL BUEN SAMARITANO";
+	const NOMBRE_APP = "El Buen Samaritano";
 	const WEB_EMPRESA = "www.elbuensamaritano.com";
 
 	const DIRECCION_EMPRESA = "Calle Siempre Viva 123, Bogotá DC, Colombia";

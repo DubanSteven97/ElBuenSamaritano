@@ -26,7 +26,6 @@
             <div class='_1'>LA PÁGINA</div>
             <div class='_2'>NO FUE ENCONNTRADA</div>
             <a class='btn' href='<?=BaseUrl();?>/login'>VOLVER AL INICIO</a>
-			<div class='_3'>by SQFreaKz</div>
         </div>
 </body>
 </html>
