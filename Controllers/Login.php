@@ -13,7 +13,7 @@
 		public function login()
 		{
 			$data['page_tag'] ="Login - Tienda Virtual";
-			$data['page_title'] = "Login - Tienda Virtual";
+			$data['page_title'] = "Login ". NombreApp()."</smal>";
 			$data['page_name'] = "login";
 			$data['page_functions_js'] = "functions_login.js";
 			$this->views->GetView($this,"login",$data);
