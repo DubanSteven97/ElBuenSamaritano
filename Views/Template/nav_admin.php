@@ -20,7 +20,7 @@
     <li class="treeview">
       <a class="app-menu__item" href="#" data-toggle="treeview">
         <i class="app-menu__icon fa fa-users" aria-hidden="true"></i>
-        <span class="app-menu__label">Usuarios</span>
+        <span class="app-menu__label">Seguridad</span>
         <i class="treeview-indicator fa fa-angle-right"></i>
       </a>
       <ul class="treeview-menu">
