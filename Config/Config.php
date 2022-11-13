@@ -1,28 +1,21 @@
 <?php
 
-
-	$db = new PDO('mysql:host=localhost;dbname=elbuensamaritano', 'root', '');
+	$db = new PDO('mysql:host=localhost;dbname=id19799826_bd_elbuensamaritano', 'id19799826_admin_elbuensamaritano', 'Elbuen202202!');
 	$query = $db->prepare("SELECT * FROM empresa WHERE idempresa = 1");
 	$query->execute();
 	$data = $query->fetchAll();
+	
 
-  
-
-
-
-
-
-	const BASE_URL = "Http://localhost/ElBuenSamaritano";
-	const BASE_URL_H = "localhost/ElBuenSamaritano";
+	const BASE_URL = "https://elbuensamaritanoucentral.000webhostapp.com";
+	const BASE_URL_H = "elbuensamaritanoucentral.000webhostapp.com/";
 
 	date_default_timezone_set('America/Bogota');
 
 	const DB_HOST = "localhost";
-	const DB_NAME = "elbuensamaritano";
-	const DB_USER = "root";
-	const DB_PASSWORD = "";
+	const DB_NAME = "id19799826_bd_elbuensamaritano";
+	const DB_USER = "id19799826_admin_elbuensamaritano";
+	const DB_PASSWORD = "Elbuen202202!";
 	const DB_CHARSET = "utf8";
-
 
 
 	define('SPD', $data[0]["separador_decimales"]);
@@ -43,7 +36,6 @@
 	define('EMAIL_PEDIDOS', $data[0]["correo_pedidos"]);
 	define('EMAIL_EMPRESA', $data[0]["correo_empresa"]);
 
-
 	const CAT_SLIDER = "1,2,3";
 	const CAT_BANNER = "4,5,8";
 
@@ -53,8 +45,4 @@
 	const COSTOENVIO = 500;
 	const VALORIVA = 19;
 
-
-	$query->closeCursor(); 
-	$query = null; 
-	$db = null;
 ?>
