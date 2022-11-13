@@ -89,6 +89,14 @@
       </a>
     </li>
     <?php } ?>
+    <?php if(!empty($_SESSION['permisos']['Configuracion']['r'])){?>
+            <li>
+                <a class="app-menu__item" href="<?=BaseUrl();?>/configuraciones">
+                    <i class="app-menu__icon fa fa-cog" aria-hidden="true"></i>
+                    <span class="app-menu__label">Configuración</span>
+                </a>
+            </li>
+            <?php } ?>
     <li>
       <a class="app-menu__item" href="<?=BaseUrl();?>/Logout">
         <i class="app-menu__icon fa fa-sign-out" aria-hidden="true"></i>
