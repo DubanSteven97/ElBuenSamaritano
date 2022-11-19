@@ -6,7 +6,11 @@
 	}
 	function NombreApp()
 	{
-		return NOMBRE_APP;
+    	require_once('Models/ConfiguracionesModel.php');
+    	$nombreApp = new ConfiguracionesModel();
+    	$idEmpresa = 1;
+    	$arrConfiguraciones = $nombreApp->DatosCorreo($idEmpresa);
+        return  $arrConfiguraciones["nombre_aplicacion"];
 	}
 	function Media(){
 		return BASE_URL."/Assets";
@@ -60,10 +64,15 @@
 	//Envio de correos
     function SendEmail($data,$template)
     {
+    	require_once('Models/ConfiguracionesModel.php');
+    	$nombreApp = new ConfiguracionesModel();
+    	$idEmpresa = 1;
+    	$arrConfiguraciones = $nombreApp->DatosCorreo($idEmpresa);
+
         $asunto = $data['asunto'];
         $emailDestino = $data['email'];
-        $empresa = NOMBRE_REMITENTE;
-        $remitente = EMAIL_REMITENTE;
+        $empresa = $arrConfiguraciones["nombre_remitente"];
+        $remitente = $arrConfiguraciones["correo_remitente"];
         $emailCopia = !empty($data['emailCopia']) ? $data['emailCopia'] : "";
         //ENVIO DE CORREO
         $de = "MIME-Version: 1.0\r\n";
@@ -233,7 +242,12 @@
 
 	function FormatMoney($cantidad)
 	{
-		$cantidad = SMONEY.' '.number_format($cantidad,0,SPD,SPM);
+        require_once('Models/ConfiguracionesModel.php');
+    	$nombreApp = new ConfiguracionesModel();
+    	$idEmpresa = 1;
+    	$arrConfiguraciones = $nombreApp->DatosMoneda($idEmpresa);
+
+		$cantidad = $arrConfiguraciones["simbolo_moneda"].' '.number_format($cantidad,0,$arrConfiguraciones["separador_decimales"],$arrConfiguraciones["separador_miles_millones"]);
 		return $cantidad;
 	}
 

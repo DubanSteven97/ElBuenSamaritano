@@ -16,7 +16,7 @@
         </div>
           <?php 
           dep($_SESSION); 
-          //dep(CambioMoneda(50000, 'COP', 'USD'));
+          echo(FormatMoney(50000.02));
             /*$requestApi = CurlConnectionGet(URLPAYPAL."/v2/checkout/orders/19F44859MN067671Y","application/json",
             GetTokenPaypal());
 
