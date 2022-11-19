@@ -33,7 +33,7 @@
             <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown"
                     aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
                 <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                    <li><a class="dropdown-item" href="<?=BaseUrl();?>/opciones"><i class="fa fa-cog fa-lg"></i>
+                    <li><a class="dropdown-item" href="<?=BaseUrl();?>/Configuraciones"><i class="fa fa-cog fa-lg"></i>
                             Opciones</a></li>
                     <li><a class="dropdown-item" href="<?=BaseUrl();?>/Usuarios/perfil"><i class="fa fa-user fa-lg"></i>
                             Perfil</a></li>
