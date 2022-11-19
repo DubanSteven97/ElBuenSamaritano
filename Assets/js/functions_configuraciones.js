@@ -17,7 +17,6 @@ formCliente.onsubmit = function(e){
     let request = (window.XMLHttpRequest) ? XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
     let ajaxUrl = BaseUrl+'/Configuraciones/UpdateEmpresa';
     let formData = new FormData(formCliente);
-    console.log(request); 
     request.open("POST",ajaxUrl,true);
     request.send(formData);
     
@@ -52,7 +51,6 @@ function fntViewEmpresa(idempresa)
             let objData = JSON.parse(request.responseText);
             if(objData.status)
             {
-                console.log(objData.data);
                 formEmpresa.querySelector("#txtDireccion").value = objData.data.direccion;
                 formEmpresa.querySelector("#txtTelefono").value = objData.data.telefono;
                 formEmpresa.querySelector("#txtEmailPedidos").value = objData.data.correo_pedidos;
