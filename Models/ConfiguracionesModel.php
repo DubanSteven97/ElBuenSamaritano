@@ -31,6 +31,28 @@
 			return $request;
 		}
 
+        public function DatosCorreo(int $compañia)
+		{
+			$this->idEmpresa = $compañia;
+			$sql = "SELECT nombre_remitente, correo_remitente, nombre_aplicacion,nombre_empresa,sitio_web FROM empresa WHERE idempresa = $this->idEmpresa";
+			$request = $this->Select($sql);
+			return $request;
+		}
+
+        public function DatosEmpresa(int $compañia)
+		{
+			$this->idEmpresa = $compañia;
+			$sql = "SELECT direccion, telefono, correo_pedidos,correo_empresa FROM empresa WHERE idempresa = $this->idEmpresa";
+			$request = $this->Select($sql);
+			return $request;
+		}
+        public function DatosMoneda(int $compañia)
+		{
+			$this->idEmpresa = $compañia;
+			$sql = "SELECT separador_decimales, separador_miles_millones, simbolo_moneda,divisa, moneda FROM empresa WHERE idempresa = $this->idEmpresa";
+			$request = $this->Select($sql);
+			return $request;
+		}
 		public function UpdateEmpresa(string $direccion, int $telefono, string $correoPedidos,string $correoEmrpesa,string $nombreRemitente, string $correoRemitente, string $nombreEmpresa, string $nombeAplicacion, string $sitioWeb,  string $SimboloMoneda,  string $Moneda,  string $Divisa,  string $SeparfadorDecimal,  string $SeparadorMilesMillones )
 		{
 			$this->idEmpresa = 1;
