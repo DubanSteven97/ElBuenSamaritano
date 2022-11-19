@@ -1,15 +1,16 @@
 <?php
 
-	const BASE_URL = "Http://localhost/ElBuenSamaritano";
-	const BASE_URL_H = "localhost/ElBuenSamaritano";
+	const BASE_URL = "https://elbuensamaritanoucentral.000webhostapp.com";
+	const BASE_URL_H = "elbuensamaritanoucentral.000webhostapp.com/";
 
 	date_default_timezone_set('America/Bogota');
 
 	const DB_HOST = "localhost";
-	const DB_NAME = "elbuensamaritano";
-	const DB_USER = "root";
-	const DB_PASSWORD = "";
+	const DB_NAME = "id19799826_bd_elbuensamaritano";
+	const DB_USER = "id19799826_admin_elbuensamaritano";
+	const DB_PASSWORD = "Elbuen202202!";
 	const DB_CHARSET = "utf8";
+
 
 
 	const CAT_SLIDER = "1,2,3";
