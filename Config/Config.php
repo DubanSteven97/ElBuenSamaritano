@@ -1,8 +1,5 @@
 <?php
 
-	const BASE_URL = "https://elbuensamaritanoucentral.000webhostapp.com";
-	const BASE_URL_H = "elbuensamaritanoucentral.000webhostapp.com/";
-
 	date_default_timezone_set('America/Bogota');
 
 	const DB_HOST = "localhost";
@@ -10,8 +7,6 @@
 	const DB_USER = "id19799826_admin_elbuensamaritano";
 	const DB_PASSWORD = "Elbuen202202!";
 	const DB_CHARSET = "utf8";
-
-
 
 	const CAT_SLIDER = "1,2,3";
 	const CAT_BANNER = "4,5,8";
