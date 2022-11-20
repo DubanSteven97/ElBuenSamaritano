@@ -95,6 +95,31 @@
         return $send;
     }
 
+    function SendEmailPqrs($data,$template)
+    {
+    	require_once('Models/ConfiguracionesModel.php');
+    	$nombreApp = new ConfiguracionesModel();
+    	$idEmpresa = 1;
+    	$arrConfiguraciones = $nombreApp->DatosCorreo($idEmpresa);
+        $arrCorreo = $nombreApp->DatosEmpresa($idEmpresa);
+
+        $asunto = $data['asunto'];
+        $emailDestino = $arrCorreo['correo_empresa'];
+        $cliente = $data["cliente"];
+        $remitente = $arrConfiguraciones["correo_remitente"];
+        $emailCopia = !empty($data['emailCopia']) ? $data['emailCopia'] : "";
+        //ENVIO DE CORREO
+        $de = "MIME-Version: 1.0\r\n";
+        $de .= "Content-type: text/html; charset=UTF-8\r\n";
+        $de .= "From: {$cliente} <{$remitente}>\r\n";
+        $de .= "Bcc: $emailCopia \r\n";
+        ob_start();
+        require_once("Views/Template/Email/".$template.".php");
+        $mensaje = ob_get_clean();
+        //$send = mail($emailDestino, $asunto, $mensaje, $de);
+        return "true";
+    }
+
 
     function GetPermisos(string $modulo)
     {
