@@ -19,7 +19,7 @@
 			}
 			$data['page_tag'] ="Categorias";
 			$data['page_name'] = "Categorias";
-			$data['page_title'] = "Categorias <small> Tienda Virtual</smal>";
+			$data['page_title'] = "Categorias <small>". NombreApp()."</smal>";
 			$data['page_functions_js'] = "functions_categorias.js";
 			$this->views->GetView($this,"categorias",$data);
 		}

@@ -19,7 +19,7 @@
 			}
 			$data['page_tag'] ="Usuarios";
 			$data['page_name'] = "usuarios";
-			$data['page_title'] = "Usuarios <small> Tienda Virtual</smal>";
+			$data['page_title'] = "Usuarios <small> ". NombreApp()."</smal>";
 			$data['page_functions_js'] = "functions_usuarios.js";
 			$this->views->GetView($this,"usuarios",$data);
 		}

@@ -9,8 +9,8 @@
 
 		public function Registro()
 		{
-			$data['page_tag'] ="Registro - El Buen Samaritano";
-			$data['page_title'] = "Registro - El Buen Samaritano";
+			$data['page_tag'] ="Registro ". NombreApp()."</smal>";
+			$data['page_title'] = "Registro ". NombreApp()."</smal>";
 			$data['page_name'] = "Registro";
 			$data['page_functions_js'] = "functions_register_user.js";
 			$this->views->getView($this,"registro",$data);
