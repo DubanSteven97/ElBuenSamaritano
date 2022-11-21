@@ -198,16 +198,16 @@ DROP TABLE IF EXISTS `persona`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `persona` (
   `idpersona` bigint(20) NOT NULL AUTO_INCREMENT,
-  `identificacion` varchar(30) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `identificacion` varchar(30) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `nombres` varchar(80) COLLATE utf8mb4_swedish_ci NOT NULL,
   `apellidos` varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
   `telefono` bigint(20) NOT NULL,
   `email_user` varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
   `password` varchar(75) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `nit` varchar(20) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `nombrefiscal` varchar(80) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `direccionfiscal` varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `token` varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `nit` varchar(20) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `nombrefiscal` varchar(80) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `direccionfiscal` varchar(100) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `token` varchar(100) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `rolid` bigint(20) NOT NULL,
   `datecreated` datetime NOT NULL DEFAULT current_timestamp(),
   `status` int(11) NOT NULL DEFAULT 1,
@@ -318,3 +318,105 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-11-04 11:32:01
+
+--
+-- Table structure for table `tipopago`
+--
+
+DROP TABLE IF EXISTS `tipopago`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tipopago` (
+  `idtipopago` bigint(20) NOT NULL AUTO_INCREMENT,
+  `tipopago` varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`idtipopago`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipopago`
+--
+
+LOCK TABLES `tipopago` WRITE;
+/*!40000 ALTER TABLE `tipopago` DISABLE KEYS */;
+INSERT INTO `tipopago` VALUES (1,'PayPal',1),(2,'Mercado Pago',1),(3,'Tarjeta',1),(4,'Depósito Bancario',1),(5,'Efectivo',1);
+/*!40000 ALTER TABLE `tipopago` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pedido`
+--
+
+DROP TABLE IF EXISTS `pedido`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pedido` (
+  `idpedido` bigint(20) NOT NULL AUTO_INCREMENT,
+  `referenciacobro` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `idtransaccion` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `datostransaccion` text COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `personaid` bigint(20) NOT NULL,
+  `fecha` datetime NOT NULL DEFAULT current_timestamp(),
+  `costo_envio` bigint(20) NOT NULL DEFAULT 0,
+  `monto` bigint(20) NOT NULL,
+  `tipopagoid` bigint(20) NOT NULL,
+  `direccion_envio` text COLLATE utf8mb4_swedish_ci NOT NULL,
+  `status` varchar(100) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  PRIMARY KEY (`idpedido`),
+  KEY `personaid` (`personaid`),
+  KEY `FK_PED_TIP_01` (`tipopagoid`),
+  CONSTRAINT `FK_PED_PER_01` FOREIGN KEY (`personaid`) REFERENCES `persona` (`idpersona`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_PED_TIP_01` FOREIGN KEY (`tipopagoid`) REFERENCES `tipopago` (`idtipopago`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `detalle_pedido`
+--
+
+DROP TABLE IF EXISTS `detalle_pedido`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `detalle_pedido` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `pedidoid` bigint(20) NOT NULL,
+  `productoid` bigint(20) NOT NULL,
+  `precio` bigint(20) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pedidoid` (`pedidoid`),
+  KEY `productoid` (`productoid`),
+  CONSTRAINT `FK_DET_PED_01` FOREIGN KEY (`pedidoid`) REFERENCES `pedido` (`idpedido`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_DET_PRO_01` FOREIGN KEY (`productoid`) REFERENCES `producto` (`idproducto`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `reembolso`
+--
+
+DROP TABLE IF EXISTS `reembolso`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reembolso` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `pedidoid` bigint(20) NOT NULL,
+  `idtransaccion` varchar(255) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `datosreembolso` text COLLATE utf8mb4_swedish_ci NOT NULL,
+  `observacion` text COLLATE utf8mb4_swedish_ci NOT NULL,
+  `status` varchar(150) COLLATE utf8mb4_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pedidoid` (`pedidoid`),
+  CONSTRAINT `reembolso_ibfk_1` FOREIGN KEY (`pedidoid`) REFERENCES `pedido` (`idpedido`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reembolso`
+--
+
+LOCK TABLES `reembolso` WRITE;
+/*!40000 ALTER TABLE `reembolso` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reembolso` ENABLE KEYS */;
+UNLOCK TABLES;

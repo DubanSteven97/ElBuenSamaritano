@@ -9,7 +9,7 @@
 			{
 				header('Location: ' . BaseUrl(). '/login');
 			}
-			GetPermisos('Usuarios');
+			GetPermisos('Clientes');
 		}
 		public function Clientes()
 		{

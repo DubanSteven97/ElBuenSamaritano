@@ -1,14 +1,14 @@
 <?php
 	
-	const BASE_URL = "https://elbuensamaritanoucentral.000webhostapp.com";
-	const BASE_URL_H = "elbuensamaritanoucentral.000webhostapp.com/";
+	const BASE_URL = "Http://localhost/ElBuenSamaritano";
+	const BASE_URL_H = "localhost/ElBuenSamaritano";
 
 	date_default_timezone_set('America/Bogota');
 
 	const DB_HOST = "localhost";
-	const DB_NAME = "id19799826_bd_elbuensamaritano";
-	const DB_USER = "id19799826_admin_elbuensamaritano";
-	const DB_PASSWORD = "Elbuen202202!";
+	const DB_NAME = "db_elbuensamaritano";
+	const DB_USER = "root";
+	const DB_PASSWORD = "root";
 	const DB_CHARSET = "utf8";
 
 	const SPD = ",";
@@ -29,13 +29,33 @@
 	const EMAIL_PEDIDOS = "info@elbuensamaritano.com";
 	const EMAIL_EMPRESA = "info@elbuensamaritano.com";
 
-	const CAT_SLIDER = "1,2,3";
-	const CAT_BANNER = "4,5,8";
+	const CAT_SLIDER = "7,2,3";
+	const CAT_BANNER = "1,5,8";
 
 	const KEY = 'jusebema';
 	const METHODENCRIPT = "AES-128-ECB";
 
 	const COSTOENVIO = 500;
 	const VALORIVA = 19;
+
+
+	const URLPAYPAL = "https://api-m.sandbox.paypal.com";
+	const IDCLIENTEPAYPAL = "AcC2eApkOGCPo2k03LryQEkZJXIGEzC_UD-Xh8AedUUmLOIImINbEMkChJjAaexBTLgvRXb0IkUMlLET";
+	const SECRETCLIENTEPAYPAL = "EO0IGxZBSKMHrrWJdsQysPwLDShcZkdU9xSH536bIdz_u2HuCPD5uz7JojS-YOkXF7oi_NhLlupNrybJ";
+	const URLGETPAYMENTPP = URLPAYPAL."/v2/payments/captures/";
+	const URLGETORDENPP =URLPAYPAL."/v2/checkout/orders/";
+	const URLREENVOLSOPP = "/refund";
+
+	const URLMERCADOPAGO = "https://api.mercadopago.com";
+	const ACCESSTOKENMERCADOPAGO = "TEST-530799249801378-101016-f19e98f43d54b91941e72dc3ea42ad11-383773505";
+	const KEYPUBLICMERCADOPAGO = "TEST-eac798f6-f505-491b-9bc3-f35cbfbb4bd8";
+	const IDAPPMERCADOPAGO = "4889927137089308";
+	const SECRETAPPMERCADOPAGO = "R3FI1VJetdTT84vfuY888xeNzEVdOmZf";
+	const URLGETPAYMENTMP = URLMERCADOPAGO."/v1/payments/";
+	const URLGETORDENMP = URLMERCADOPAGO."/merchant_orders/";
+	const URLREENVOLSOMP = "/refunds";
+
+
+	const KEYTASACAMBIO = "Z1rthZIKB8xx7we6m44l4ImeXXoxQAVg";
 
 ?>
