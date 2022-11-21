@@ -138,25 +138,10 @@
 						$btnView = '<button class="btn btn-info btn-sm btnViewCliente" onClick= "fntViewCliente('.$arrData[$i]['idpersona'].')" title="Ver cliente"><i class="fas fa-eye"></i></button>';
 					}
 					if($_SESSION['permisosMod']['u']){
-						if(($_SESSION['idUser'] == 1 AND $_SESSION['userData']['nombrerol'] == 'Administrador') ||
-							($_SESSION['userData']['nombrerol'] == 'Administrador' AND $arrData[$i]['nombrerol'] != 'Administrador'))
-						{
-							$btnEdit = '<button class="btn btn-primary btn-sm btnEditCliente" onClick= "fntEditCliente(this,'.$arrData[$i]['idpersona'].')" title="Editar cliente"><i class="fas fa-pencil-alt"></i></button>';
-						}else
-						{
-							$btnEdit = '<button class="btn btn-primary btn-sm " disabled><i class="fas fa-pencil-alt"></i></button>';
-						}
+						$btnEdit = '<button class="btn btn-primary btn-sm btnEditCliente" onClick= "fntEditCliente(this,'.$arrData[$i]['idpersona'].')" title="Editar cliente"><i class="fas fa-pencil-alt"></i></button>';
 					}
 					if($_SESSION['permisosMod']['d']){
-						if(($_SESSION['idUser'] == 1 AND $_SESSION['userData']['nombrerol'] == 'Administrador') ||
-							($_SESSION['userData']['nombrerol'] == 'Administrador' AND $arrData[$i]['nombrerol'] != 'Administrador') AND
-							($_SESSION['userData']['idpersona'] != $arrData[$i]['idpersona']))
-						{
-							$btnDelete = '<button class="btn btn-danger btn-sm btnDelUsuario" onClick= "fntDelCliente('.$arrData[$i]['idpersona'].')" title="Eliminar Cliente"><i class="fas fa-trash-alt"></i></button>';
-						}else
-						{
-							$btnDelete = '<button class="btn btn-danger btn-sm" disabled><i class="fas fa-trash-alt"></i></button>';
-						}
+						$btnDelete = '<button class="btn btn-danger btn-sm btnDelUsuario" onClick= "fntDelCliente('.$arrData[$i]['idpersona'].')" title="Eliminar Cliente"><i class="fas fa-trash-alt"></i></button>';
 					}
 					$arrData[$i]['options'] = '<div class="text-center">
 												'.$btnView.' '.$btnEdit.' '.$btnDelete.'

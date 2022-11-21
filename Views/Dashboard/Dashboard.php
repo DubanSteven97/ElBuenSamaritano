@@ -1,5 +1,6 @@
 <?php HeaderAdmin($data); ?>
   <main class="app-content">
+  <?php GetModal('modalPQRS',$data); ?>
     <div class="app-title">
       <div>
         <h1><i class="fa fa-dashboard"></i> <?= $data['page_title'];?></h1>
@@ -16,7 +17,7 @@
         </div>
           <?php 
           dep($_SESSION); 
-          //dep(CambioMoneda(50000, 'COP', 'USD'));
+          echo(FormatMoney(50000.02));
             /*$requestApi = CurlConnectionGet(URLPAYPAL."/v2/checkout/orders/19F44859MN067671Y","application/json",
             GetTokenPaypal());
 
@@ -25,7 +26,10 @@
             dep($requestApi);
             dep($requestPost);*/
           ?>
+
+        <button type="button" class="btn btn-primary" onclick="openModal()">Primary</button>
       </div>
     </div>
   </main>
+<script src="<?=media();?>/js/functions_pqrs.js"></script>
 <?php FooterAdmin($data); ?>   
