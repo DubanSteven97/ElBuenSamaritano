@@ -28,6 +28,7 @@
 		}
 	}
 	
+	require_once("Vendor/autoload.php");
 	require_once("Libraries/Core/Autoload.php");
 	require_once("Libraries/Core/Load.php");
 

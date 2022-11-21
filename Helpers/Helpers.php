@@ -45,7 +45,7 @@
 	
 	function FooterTienda($data="")
 	{
-		$view_footer = "Views/Template/footer.php";
+		$view_footer = "Views/Template/footer_tienda.php";
 		require_once($view_footer);
 	}
 	function Dep($data)
@@ -386,6 +386,24 @@
         $response = curl_exec($curl);
 
         curl_close($curl);
+        $response = json_decode($response);
         return $response;
+    }
+    
+    function Meses()
+    {
+        $meses = array("Enero",
+                    "Febrero",
+                    "Marzo",
+                    "Abril",
+                    "Mayo",
+                    "Junio",
+                    "Julio",
+                    "Agosto",
+                    "Septiembre",
+                    "Octubre",
+                    "Noviembre",
+                    "Diciembre");
+        return $meses;
     }
 ?>
