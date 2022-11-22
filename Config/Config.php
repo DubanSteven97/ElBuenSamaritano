@@ -1,6 +1,6 @@
 <?php
 
-	const BASE_URL = "Http://localhost/ElBuenSamaritano";
+	const BASE_URL = "Http://localhost/ElBuenSamaritano/";
 	const BASE_URL_H = "localhost/ElBuenSamaritano";
 
 	date_default_timezone_set('America/Bogota');
@@ -29,8 +29,8 @@
 	const EMAIL_PEDIDOS = "info@elbuensamaritano.com";
 	const EMAIL_EMPRESA = "info@elbuensamaritano.com";
 
-	const CAT_SLIDER = "1,2,3";
-	const CAT_BANNER = "4,5,8";
+	const CAT_SLIDER = "7,2,3";
+	const CAT_BANNER = "6,5,8";
 
 	const KEY = 'jusebema';
 	const METHODENCRIPT = "AES-128-ECB";
@@ -57,5 +57,7 @@
 
 
 	const KEYTASACAMBIO = "Z1rthZIKB8xx7we6m44l4ImeXXoxQAVg";
+
+	const STATUS = array('Completo','Aprobado','Cancelado','Reembolsado','Pendiente','Entregado');
 
 ?>
