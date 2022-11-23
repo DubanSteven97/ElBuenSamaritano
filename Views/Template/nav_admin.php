@@ -20,11 +20,11 @@
     <li class="treeview">
       <a class="app-menu__item" href="#" data-toggle="treeview">
         <i class="app-menu__icon fa fa-users" aria-hidden="true"></i>
-        <span class="app-menu__label">Usuarios</span>
+        <span class="app-menu__label">Seguridad</span>
         <i class="treeview-indicator fa fa-angle-right"></i>
       </a>
       <ul class="treeview-menu">
-        <?php if(!empty($_SESSION['permisos']['Usuarios']['r'])){?>
+        <?php if(!empty($_SESSION['permisos']['Usuarios']['r'])){ ?>
         <li>
           <a class="treeview-item" href="<?=BaseUrl();?>/usuarios">
             <i class="icon fa fa-circle-o"></i> Usuarios
@@ -89,6 +89,14 @@
       </a>
     </li>
     <?php } ?>
+    <?php if(!empty($_SESSION['permisos']['Configuracion']['r'])){?>
+            <li>
+                <a class="app-menu__item" href="<?=BaseUrl();?>/configuraciones">
+                    <i class="app-menu__icon fa fa-cog" aria-hidden="true"></i>
+                    <span class="app-menu__label">Configuración</span>
+                </a>
+            </li>
+            <?php } ?>
     <li>
       <a class="app-menu__item" href="<?=BaseUrl();?>/Logout">
         <i class="app-menu__icon fa fa-sign-out" aria-hidden="true"></i>

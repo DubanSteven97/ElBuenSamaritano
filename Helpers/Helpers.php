@@ -4,7 +4,23 @@
 	{
 		return BASE_URL;
 	}
+	function NombreApp()
+	{
+    	require_once('Models/ConfiguracionesModel.php');
+    	$nombreApp = new ConfiguracionesModel();
+    	$idEmpresa = 1;
+    	$arrConfiguraciones = $nombreApp->DatosCorreo($idEmpresa);
+        return  $arrConfiguraciones["nombre_aplicacion"];
+	}
 
+	function contactoWshatsapp()
+	{
+    	require_once('Models/ConfiguracionesModel.php');
+    	$nombreApp = new ConfiguracionesModel();
+    	$idEmpresa = 1;
+    	$arrConfiguraciones = $nombreApp->DatosEmpresa($idEmpresa);
+        return ("https://wa.me/".$arrConfiguraciones['telefono']."?text=¡Hola!%20Quisiera%20saber%20sobre%20mi%20pedido");
+	}
 	function Media(){
 		return BASE_URL."/Assets";
 	}
@@ -29,7 +45,7 @@
 	
 	function FooterTienda($data="")
 	{
-		$view_footer = "Views/Template/footer.php";
+		$view_footer = "Views/Template/footer_tienda.php";
 		require_once($view_footer);
 	}
 	function Dep($data)
@@ -57,10 +73,15 @@
 	//Envio de correos
     function SendEmail($data,$template)
     {
+    	require_once('Models/ConfiguracionesModel.php');
+    	$nombreApp = new ConfiguracionesModel();
+    	$idEmpresa = 1;
+    	$arrConfiguraciones = $nombreApp->DatosCorreo($idEmpresa);
+
         $asunto = $data['asunto'];
         $emailDestino = $data['email'];
-        $empresa = NOMBRE_REMITENTE;
-        $remitente = EMAIL_REMITENTE;
+        $empresa = $arrConfiguraciones["nombre_remitente"];
+        $remitente = $arrConfiguraciones["correo_remitente"];
         $emailCopia = !empty($data['emailCopia']) ? $data['emailCopia'] : "";
         //ENVIO DE CORREO
         $de = "MIME-Version: 1.0\r\n";
@@ -72,6 +93,31 @@
         $mensaje = ob_get_clean();
         $send = mail($emailDestino, $asunto, $mensaje, $de);
         return $send;
+    }
+
+    function SendEmailPqrs($data,$template)
+    {
+    	require_once('Models/ConfiguracionesModel.php');
+    	$nombreApp = new ConfiguracionesModel();
+    	$idEmpresa = 1;
+    	$arrConfiguraciones = $nombreApp->DatosCorreo($idEmpresa);
+        $arrCorreo = $nombreApp->DatosEmpresa($idEmpresa);
+
+        $asunto = $data['asunto'];
+        $emailDestino = $arrCorreo['correo_empresa'];
+        $cliente = $data["cliente"];
+        $remitente = $arrConfiguraciones["correo_remitente"];
+        $emailCopia = !empty($data['emailCopia']) ? $data['emailCopia'] : "";
+        //ENVIO DE CORREO
+        $de = "MIME-Version: 1.0\r\n";
+        $de .= "Content-type: text/html; charset=UTF-8\r\n";
+        $de .= "From: {$cliente} <{$remitente}>\r\n";
+        $de .= "Bcc: $emailCopia \r\n";
+        ob_start();
+        require_once("Views/Template/Email/".$template.".php");
+        $mensaje = ob_get_clean();
+        //$send = mail($emailDestino, $asunto, $mensaje, $de);
+        return "true";
     }
 
 
@@ -230,7 +276,12 @@
 
 	function FormatMoney($cantidad)
 	{
-		$cantidad = SMONEY.' '.number_format($cantidad,0,SPD,SPM);
+        require_once('Models/ConfiguracionesModel.php');
+    	$nombreApp = new ConfiguracionesModel();
+    	$idEmpresa = 1;
+    	$arrConfiguraciones = $nombreApp->DatosMoneda($idEmpresa);
+
+		$cantidad = $arrConfiguraciones["simbolo_moneda"].' '.number_format($cantidad,0,$arrConfiguraciones["separador_decimales"],$arrConfiguraciones["separador_miles_millones"]);
 		return $cantidad;
 	}
 
@@ -335,6 +386,24 @@
         $response = curl_exec($curl);
 
         curl_close($curl);
+        $response = json_decode($response);
         return $response;
+    }
+    
+    function Meses()
+    {
+        $meses = array("Enero",
+                    "Febrero",
+                    "Marzo",
+                    "Abril",
+                    "Mayo",
+                    "Junio",
+                    "Julio",
+                    "Agosto",
+                    "Septiembre",
+                    "Octubre",
+                    "Noviembre",
+                    "Diciembre");
+        return $meses;
     }
 ?>
